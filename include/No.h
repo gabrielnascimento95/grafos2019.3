@@ -2,6 +2,8 @@
 #define NO_H
 
 
+class Aresta;
+
 class No
 {
     public:

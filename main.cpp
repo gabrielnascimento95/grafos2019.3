@@ -1,8 +1,11 @@
+#include <iostream>
+#include "Grafo.h"
+#include "No.h"
+#include "Aresta.h"
 #include <sstream>
 #include <fstream>
 #include <iostream>
 #include <stdlib.h>
-#include <stdio.h>
 
 using namespace std;
 
@@ -79,12 +82,7 @@ int main(int argc, char * argv[])
     grafo->eh_ponderado_aresta(grafPonderadoAresta);
     grafo->eh_ponderado_no(grafPonderadoNo);
 
-    cout << "Grafo orientado:" << if(grafo->getOrientacao()) ? "Não" : "Sim" << endl;
-    cout << "Grafo ponderadoAresta:" << if(grafo->getPonderadoAresta()) ? "Não" : "Sim" << endl;
-    cout << "Grafo ponderadoNo:" << if(grafo->getPonderadoNo()) ? "Não" : "Sim" << endl;
-
-
-    lerArquivoEntrada(argv[1], grafo);
+    //lerArquivoEntrada(argv[1], grafo);
 
     return 0;
 }

@@ -1,4 +1,11 @@
+#include <iostream>
+#include <stdio.h>
+#include <stdlib.h>
 #include "No.h"
+#include "Aresta.h"
+
+
+using namespace std;
 
 No::No(int id)
 {

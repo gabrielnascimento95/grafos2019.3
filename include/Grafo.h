@@ -1,6 +1,9 @@
 #ifndef GRAFO_H
 #define GRAFO_H
-
+#include "No.h"
+#include "Aresta.h"
+#include <stack>
+#include <vector>
 
 class Grafo
 {
@@ -13,9 +16,9 @@ class Grafo
         void eh_ponderado_aresta(int val);
         void eh_ponderado_no(int val);
         void imprime();
-        bool getOrientacao(){return ehOrientado};
-        bool getPonderadoAresta(){return ehPonderadoAresta};
-        bool getPonderadoNo(){return ehPonderadoNo};
+        bool getOrientacao(){return ehOrientado;};
+        bool getPonderadoAresta(){return ehPonderadoAresta;};
+        bool getPonderadoNo(){return ehPonderadoNo;};
         virtual ~Grafo();
 
     protected:
