@@ -1,12 +1,12 @@
 #ifndef ARESTA_H
 #define ARESTA_H
-#include "No.h"
+#include <No.h>
 
 
 class Aresta
 {
     public:
-        Aresta();
+        Aresta(int id);
         int getId(){return id;}
         float getPeso(){return peso;};
         void setPeso(float novoPeso){peso = novoPeso;};

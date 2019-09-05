@@ -1,11 +1,12 @@
 #include <iostream>
-#include "Grafo.h"
-#include "No.h"
-#include "Aresta.h"
+#include <Grafo.h>
+#include <No.h>
+#include <Aresta.h>
 #include <sstream>
 #include <fstream>
 #include <iostream>
 #include <stdlib.h>
+#include <cstdio>
 
 using namespace std;
 
@@ -45,14 +46,18 @@ void lerArquivoEntrada(char arquivo[80], Grafo* grafo){
 
     while(!feof(file)){
         int v1, v2, line = 1;
-        float peso;
-        fscanf(file, "%d %d %f\n", &v1, &v2, &peso);
-        cout << "Linha " << line << endl;
-        cout << "Vertice 1: " << v1 << endl;
-        cout << "Vertice 2: " << v2 << endl;
-        cout << "Peso entre 1 e 2: " << peso << endl;
-        cout << endl;
-        line++;
+        int peso;
+        fscanf(file, "%d %d %d\n", &v1, &v2, &peso);
+            if(!grafo->buscaNoId(v1))
+                grafo->insereNo(v1);
+            if(!grafo->buscaNoId(v2))
+                grafo->insereNo(v2);
+            if(grafo->getOrientacao() == false){
+                grafo->insereAresta(peso, v1, v2);
+                grafo->insereAresta(peso, v2, v1);
+            }else{
+                grafo->insereAresta(peso, v1, v2);
+            }
     }
 }
 
@@ -69,8 +74,8 @@ int main(int argc, char * argv[])
 {
     cabecalhoTrabalho();
 
-    cout << "Arquivo de entrada:" << argv[1] << endl;
-    cout << "Arquivo de saida:" << argv[2] << endl;
+    cout << "Arquivo de entrada:v" << argv[1] << endl;
+    cout << "Arquivo de saida: " << argv[2] << endl;
     cout << endl;
 
     int grafOrientado = atoi (argv[3]);
@@ -82,7 +87,8 @@ int main(int argc, char * argv[])
     grafo->eh_ponderado_aresta(grafPonderadoAresta);
     grafo->eh_ponderado_no(grafPonderadoNo);
 
-    //lerArquivoEntrada(argv[1], grafo);
+    lerArquivoEntrada(argv[1], grafo);
+    grafo->imprime();
 
     return 0;
 }

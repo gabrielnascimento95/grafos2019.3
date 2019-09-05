@@ -1,7 +1,7 @@
 #include <iostream>
 #include <stdio.h>
 #include <stdlib.h>
-#include "Grafo.h"
+#include <Grafo.h>
 #include <queue>
 #include <stack>
 #include <limits>
@@ -23,18 +23,19 @@ void Grafo::insereNo(int id){
     this->setOrdem(getOrdem()+1);
 }
 
-void Grafo::insereAresta(int id, int idOrigem, int idDestino){
-
+void Grafo::insereAresta(int id_no, int idOrigem, int idDestino){
     No *origem, *destino;
+
     origem = this->buscaNoId(idOrigem);
     destino = this->buscaNoId(idDestino);
 
     Aresta *adj = origem->getAdj();
-    Aresta *aresta = new Aresta(id);
 
+    Aresta *aresta = new Aresta(id_no);
     origem->setAdj(aresta);
     aresta->setNoAdj(destino);
     aresta->setNoOrigem(origem);
+
     aresta->setProx(adj);
 
     aresta->setproxAux(this->ListaArestas);
@@ -42,7 +43,8 @@ void Grafo::insereAresta(int id, int idOrigem, int idDestino){
 
 }
 
-void No* Grafo::buscaNoId(int id)
+
+No* Grafo::buscaNoId(int id)
 {
     No* no = this->ListaNos;
     while(no!=NULL){
@@ -91,8 +93,6 @@ void Grafo::eh_ponderado_no(int val){
         exit(3);
     }
 }
-
-bool Grafo::eh
 
 Grafo::~Grafo()
 {
